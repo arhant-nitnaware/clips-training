@@ -1,0 +1,233 @@
+2026-07-22,14:37:44 | INFO | open_clip_train.main | Running with a single process. Device cuda.
+2026-07-22,14:37:44 | INFO | open_clip.factory | Parsing model identifier. Schema: None, Identifier: ViT-B-32
+2026-07-22,14:37:44 | INFO | open_clip.factory | Loaded built-in ViT-B-32 model config.
+2026-07-22,14:37:45 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/agent-harnesses "HTTP/1.1 200 OK"
+2026-07-22,14:37:45 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/timm/vit_base_patch32_clip_224.openai/resolve/main/open_clip_model.safetensors "HTTP/1.1 302 Found"
+2026-07-22,14:37:45 | WARNING | huggingface_hub.utils._http | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-07-22,14:37:45 | INFO | open_clip.factory | Instantiating model architecture: CLIP
+2026-07-22,14:37:47 | INFO | open_clip.factory | Loading full pretrained weights from: /home/mgupta/.cache/huggingface/hub/models--timm--vit_base_patch32_clip_224.openai/snapshots/a6f597a30f7b82c51704746581f9a4e41421e878/open_clip_model.safetensors
+2026-07-22,14:37:53 | INFO | open_clip.factory | Final image preprocessing configuration set: {'size': (224, 224), 'mode': 'RGB', 'mean': (0.48145466, 0.4578275, 0.40821073), 'std': (0.26862954, 0.26130258, 0.27577711), 'interpolation': 'bicubic', 'resize_mode': 'shortest', 'fill_color': 0}
+2026-07-22,14:37:53 | INFO | open_clip.factory | Model ViT-B-32 creation process complete.
+2026-07-22,14:37:53 | INFO | open_clip_train.main | Model:
+2026-07-22,14:37:53 | INFO | open_clip_train.main | CLIP(
+  (visual): VisionTransformer(
+    (conv1): Conv2d(3, 768, kernel_size=(32, 32), stride=(32, 32), bias=False)
+    (patch_dropout): Identity()
+    (ln_pre): LayerNorm((768,), eps=1e-05, elementwise_affine=True, bias=True)
+    (transformer): Transformer(
+      (resblocks): ModuleList(
+        (0-11): 12 x ResidualAttentionBlock(
+          (ln_1): LayerNorm((768,), eps=1e-05, elementwise_affine=True, bias=True)
+          (attn): Attention(
+            (ln_q): Identity()
+            (ln_k): Identity()
+            (attn_drop): Dropout(p=0.0, inplace=False)
+            (ln_inner): Identity()
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (out_drop): Dropout(p=0.0, inplace=False)
+          )
+          (ls_1): Identity()
+          (ln_2): LayerNorm((768,), eps=1e-05, elementwise_affine=True, bias=True)
+          (mlp): Sequential(
+            (c_fc): Linear(in_features=768, out_features=3072, bias=True)
+            (gelu): GELU(approximate='none')
+            (c_proj): Linear(in_features=3072, out_features=768, bias=True)
+          )
+          (ls_2): Identity()
+        )
+      )
+    )
+    (ln_post): LayerNorm((768,), eps=1e-05, elementwise_affine=True, bias=True)
+  )
+  (transformer): Transformer(
+    (resblocks): ModuleList(
+      (0-11): 12 x ResidualAttentionBlock(
+        (ln_1): LayerNorm((512,), eps=1e-05, elementwise_affine=True, bias=True)
+        (attn): Attention(
+          (ln_q): Identity()
+          (ln_k): Identity()
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (ln_inner): Identity()
+          (out_proj): Linear(in_features=512, out_features=512, bias=True)
+          (out_drop): Dropout(p=0.0, inplace=False)
+        )
+        (ls_1): Identity()
+        (ln_2): LayerNorm((512,), eps=1e-05, elementwise_affine=True, bias=True)
+        (mlp): Sequential(
+          (c_fc): Linear(in_features=512, out_features=2048, bias=True)
+          (gelu): GELU(approximate='none')
+          (c_proj): Linear(in_features=2048, out_features=512, bias=True)
+        )
+        (ls_2): Identity()
+      )
+    )
+  )
+  (token_embedding): Embedding(49408, 512)
+  (ln_final): LayerNorm((512,), eps=1e-05, elementwise_affine=True, bias=True)
+)
+2026-07-22,14:37:53 | INFO | open_clip_train.main | Params:
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   accum_freq: 1
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   audio_ext: flac
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   audio_fill: repeatpad
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   audio_fusion: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   audio_int16_normalize: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   audio_layer_decay: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   audio_multiprocessing_context: forkserver
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   audio_trunc: rand_trunc
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   audio_zeroshot_audio_key: audio
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   audio_zeroshot_class_key: category
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   audio_zeroshot_dataset: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   audio_zeroshot_multiprocessing_context: forkserver
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   audio_zeroshot_split: train
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   audio_zeroshot_target_key: target
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   audio_zeroshot_templates: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   audio_zeroshot_workers: 0
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   aug_cfg: {}
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   batch_size: 32
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   beta1: 0.9
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   beta2: 0.98
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   bucket_chunk: 128
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   bucket_pool: 2048
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   bucket_prefetch_pools: 0
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   cache_dir: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   checkpoint_path: logs/2026_07_22-14_37_44-model_ViT-B-32-lr_1e-05-b_32-j_8-p_amp/checkpoints
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   coca_caption_loss_weight: 2.0
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   coca_contrastive_loss_weight: 1.0
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   copy_codebase: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   csv_caption_key: caption
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   csv_img_key: filepath
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   csv_separator: ,
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   dataset_resampled: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   dataset_type: csv
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   ddp_static_graph: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   debug: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   delete_previous_checkpoint: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   device: cuda
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   dist_backend: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   dist_url: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   distill: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   distill_model: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   distill_pretrained: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   distributed: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   epochs: 1
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   epochs_cooldown: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   eps: 1e-06
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   force_context_length: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   force_custom_text: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   force_image_size: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   force_naflex_vision: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   force_patch_dropout: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   force_quick_gelu: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   fsdp: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   fsdp_checkpoint: full
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   fsdp_no_reshard_after_forward: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   fsdp_offload_cpu: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   gather_with_grad: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   genlap: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   genlip: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   grad_checkpointing: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   grad_clip_norm: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   image_interpolation: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   image_key: jpg;png;jpeg;webp
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   image_layer_decay: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   image_mean: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   image_resize_mode: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   image_std: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   imagenet_v2: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   imagenet_val: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   json_text_key: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   json_text_key_probs: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   length_bucketing: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   local_loss: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   local_rank: 0
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   lock_image: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   lock_image_freeze_bn_stats: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   lock_image_unlocked_groups: 0
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   lock_text: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   lock_text_freeze_layer_norm: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   lock_text_unlocked_layers: 0
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   log_every_n_steps: 100
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   log_level: 20
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   log_local: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   log_metric_every_n_steps: 10
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   log_path: logs/2026_07_22-14_37_44-model_ViT-B-32-lr_1e-05-b_32-j_8-p_amp/out.log
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   logs: logs
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   loss_dist_impl: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   lr: 1e-05
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   lr_cooldown_end: 0.0
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   lr_cooldown_power: 1.0
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   lr_scheduler: cosine
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   max_image_pixels: 25000000
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   model: ViT-B-32
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   momentum: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   naflex_batch_divisor: 8
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   naflex_loss_scale: none
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   naflex_max_text_tokens: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   naflex_max_tokens_per_batch: 16384
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   naflex_num_train_image_tokens: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   naflex_pad_multiple: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   naflex_patch_size_probs: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   naflex_patch_sizes: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   naflex_seq_len_probs: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   naflex_seq_lens: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   naflexclap: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   name: 2026_07_22-14_37_44-model_ViT-B-32-lr_1e-05-b_32-j_8-p_amp
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   no_set_device_rank: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   opt: adamw
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   opt_fallback_list: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   opt_kwargs: {}
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   precision: amp
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   pretrained: openai
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   pretrained_audio: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   pretrained_image: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   rank: 0
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   remote_sync: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   remote_sync_frequency: 300
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   remote_sync_protocol: s3
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   report_to: 
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   resume: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   save_frequency: 1
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   save_most_recent: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   seed: 0
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   siglip: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   skip_scheduler: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   tensorboard: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   tensorboard_path: 
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   text_key: txt
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   text_layer_decay: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   text_pad_multiple: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   text_pooler_in_head: True
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   torchcompile: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   torchcompile_backend: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   torchcompile_mode: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   torchcompile_strategy: task
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   trackio: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   train_data: ../dataset/NWPU-Captions/train.csv
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   train_data_upsampling_factors: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   train_loss_ema_samples: 50000
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   train_num_samples: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   use_bn_sync: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   use_bnb_linear: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   use_naflex: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   val_data: ../dataset/NWPU-Captions/val.csv
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   val_frequency: 1
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   val_num_samples: None
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   val_retrieval_chunk_size: 4096
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   val_retrieval_precision: fp32
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   variable_text: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   wandb: False
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   wandb_notes: 
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   wandb_project_name: open-clip
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   warmup: 10000
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   wd: 0.2
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   wd_exclude_patterns: []
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   workers: 8
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   world_size: 1
+2026-07-22,14:37:53 | INFO | open_clip_train.main |   zeroshot_frequency: 2
+2026-07-22,14:37:53 | INFO | open_clip_train.main | Created AdamW (adamw) optimizer: lr: 1e-05, betas: (0.9, 0.98), eps: 1e-06, weight_decay: 0.2, amsgrad: False, maximize: False, foreach: None, capturable: False, differentiable: False, fused: None, decoupled_weight_decay: True
+2026-07-22,14:37:53 | INFO | open_clip.factory | Parsing tokenizer identifier. Schema: None, Identifier: ViT-B-32
+2026-07-22,14:37:53 | INFO | open_clip.factory | Attempting to load config from built-in: ViT-B-32
+2026-07-22,14:37:53 | INFO | open_clip.factory | Using default SimpleTokenizer.
+2026-07-22,14:37:54 | INFO | open_clip_train.main | Start epoch 0
+2026-07-22,14:38:06 | INFO | open_clip_train.train | Train Epoch: 0 [    32/125995 (0%)] Data (t): 1.981 Batch (t): 12.051, 2.65534/s, 2.65534/s/gpu LR: 0.000000 Logit Scale: 100.000 Contrastive_loss: 1.8577 (1.8577) Loss: 1.8577 (1.8577)
+2026-07-22,14:38:19 | INFO | open_clip_train.train | Train Epoch: 0 [  3232/125995 (3%)] Data (t): 0.003 Batch (t): 0.124, 232.293/s, 232.293/s/gpu LR: 0.000000 Logit Scale: 100.000 Contrastive_loss: 1.1768 (1.8336) Loss: 1.1768 (1.8336)
